@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:get/get.dart';
 import 'package:seenit/views/home_screen.dart';
+import 'package:seenit/widgets/textforminput.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -53,37 +55,27 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 30,
               ),
-              TextFormField(
+              TextFormInput(
                 controller: _usernameController,
-                style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  hintStyle: TextStyle(color: Colors.grey),
-                  hintText: "Username",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                ),
+                hintText: "Username",
+                textInputType: TextInputType.text,
               ),
               const SizedBox(
                 height: 10,
               ),
-              TextFormField(
+              TextFormInput(
                 controller: _passwordController,
-                obscureText: true,
+                isPass: true,
+                hintText: "Password",
                 style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                    hintStyle: TextStyle(color: Colors.grey),
-                    hintText: "Password",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(50))),
+                textInputType: TextInputType.text,
               ),
               const SizedBox(
                 height: 10,
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => HomeScreen()));
+                  Get.offAll(() => HomeScreen());
                 },
                 child: const Center(child: Text("Login")),
               ),
